@@ -17,14 +17,14 @@ class PostsViewController: UITableViewController {
         presenter.viewDidLoad()
     }
     
-    private var details: [String] = [] {
+    private var posts: [PostData] = [] {
         didSet {
             tableView.reloadData()
         }
     }
         
-    func updateDetails(_ details: [String]) {
-        self.details = details
+    func updatePosts(_ posts: [PostData]) {
+        self.posts = posts
     }
     
     private var selectedDetail: String?
@@ -34,17 +34,20 @@ class PostsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return details.count
+        return posts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        cell.textLabel?.text = details[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else {
+            return UITableViewCell()
+        }
+        let data = posts[indexPath.row]
+        cell.load(data: data)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedDetail = details[indexPath.row]
+        selectedDetail = posts[indexPath.row].title
         performSegue(withIdentifier: "detail", sender: nil)
     }
     

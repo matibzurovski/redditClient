@@ -16,20 +16,16 @@ class PostsPresenter {
     }
     
     func viewDidLoad() {
-        let details = [
-                "Detail 0",
-                "Detail 1",
-                "Detail 2",
-                "Detail 3",
-                "Detail 4",
-                "Detail 5",
-                "Detail 6",
-                "Detail 7",
-                "Detail 8",
-                "Detail 9",
-                "Detail 10",
-                "Detail 11"
-            ]
-        viewController.updateDetails(details)
+        var posts: [PostData] = []
+        for index in 0..<12 {
+            if index == 3 {
+                let data = PostData(title: "Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy.", username: "sameFunnyName", thumbnail: nil, dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
+                posts.append(data)
+            } else {
+                let data = PostData(title: "First new Keanu pic of the year", username: "sameFunnyName", thumbnail: "https://b.thumbs.redditmedia.com/UzwFlv-3K7cDKjf9jhUMXikn-6QzD1ZMRtzGSBTqBnk.jpg", dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
+                posts.append(data)
+            }
+        }
+        viewController.updatePosts(posts)
     }
 }
