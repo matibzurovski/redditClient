@@ -38,6 +38,15 @@ class PostsPresenter {
         viewController.performSegue(withIdentifier: "detail", sender: nil)
     }
     
+    func willDisplayLastPost() {
+        var posts: [PostData] = []
+        for index in 0..<4 {
+            let data = PostData(title: "Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy.", username: "sameFunnyName", thumbnail: nil, fullSizeImage: nil, dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
+            posts.append(data)
+        }
+        viewController.addPosts(posts)
+    }
+    
     func prepareForSegue(_ segue: UIStoryboardSegue) {
         if segue.identifier == "detail" {
             if let navigationController = segue.destination as? UINavigationController,

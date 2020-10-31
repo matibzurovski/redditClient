@@ -27,10 +27,20 @@ class PostsViewController: UITableViewController {
         presenter?.viewDidLoad()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        presenter?.prepareForSegue(segue)
+    }
+    
     // MARK: - Interface
     
     func updatePosts(_ posts: [PostData]) {
         self.posts = posts
+    }
+    
+    func addPosts(_ posts: [PostData]) {
+        self.posts.append(contentsOf: posts)
     }
     
     // MARK: - Table view
@@ -57,10 +67,10 @@ class PostsViewController: UITableViewController {
         presenter?.didSelectPost(posts[indexPath.row])
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        presenter?.prepareForSegue(segue)
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastItem = posts.count - 1
+        guard indexPath.row == lastItem else { return }
+        presenter?.willDisplayLastPost()
     }
 }
 
