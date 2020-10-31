@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 class PostsPresenter {
     
     let viewController: PostsViewController
+    
+    fileprivate var selectedPost: PostData?
     
     init(viewController: PostsViewController) {
         self.viewController = viewController
@@ -28,5 +31,21 @@ class PostsPresenter {
             }
         }
         viewController.updatePosts(posts)
+    }
+    
+    func didSelectPost(_ post: PostData) {
+        selectedPost = post
+        viewController.performSegue(withIdentifier: "detail", sender: nil)
+    }
+    
+    func prepareForSegue(_ segue: UIStoryboardSegue) {
+        if segue.identifier == "detail" {
+            if let navigationController = segue.destination as? UINavigationController,
+               let destination = navigationController.topViewController as? DetailViewController,
+               let post = selectedPost {
+                let presenter = DetailPresenter(viewController: destination, post: post)
+                destination.presenter = presenter
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="j5O-fQ-Rvu">
-                                <rect key="frame" x="20" y="108" width="374" height="343"/>
+                                <rect key="frame" x="20" y="108" width="374" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-xf-TNp">
                                         <rect key="frame" x="0.0" y="0.0" width="86.5" height="21.5"/>
@@ -26,11 +26,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eiB-XG-iNy">
-                                        <rect key="frame" x="0.0" y="37.5" width="374" height="269"/>
+                                        <rect key="frame" x="0.0" y="37.5" width="374" height="103"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="fbR-yS-2o8">
-                                                <rect key="frame" x="30" y="0.0" width="314" height="269"/>
+                                                <rect key="frame" x="127" y="0.0" width="120" height="103"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="V3X-l0-l0m"/>
                                                     <constraint firstAttribute="width" secondItem="fbR-yS-2o8" secondAttribute="height" multiplier="7:6" id="vSi-sE-S7y"/>
                                                 </constraints>
                                             </imageView>
@@ -39,12 +40,11 @@
                                         <constraints>
                                             <constraint firstItem="fbR-yS-2o8" firstAttribute="top" secondItem="eiB-XG-iNy" secondAttribute="top" id="HBF-mj-Dfr"/>
                                             <constraint firstAttribute="bottom" secondItem="fbR-yS-2o8" secondAttribute="bottom" id="PMk-hf-eI6"/>
-                                            <constraint firstItem="fbR-yS-2o8" firstAttribute="leading" secondItem="eiB-XG-iNy" secondAttribute="leading" constant="30" id="c48-e4-GiF"/>
                                             <constraint firstItem="fbR-yS-2o8" firstAttribute="centerX" secondItem="eiB-XG-iNy" secondAttribute="centerX" id="eeb-74-FII"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0W-tM-GhH">
-                                        <rect key="frame" x="0.0" y="322.5" width="33" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="156.5" width="33" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -66,14 +66,45 @@
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="uiE-l3-53K"/>
                     <connections>
-                        <outlet property="fullSizeImageView" destination="fbR-yS-2o8" id="uQq-Ag-y9Z"/>
+                        <outlet property="thumbnailImageView" destination="fbR-yS-2o8" id="uQq-Ag-y9Z"/>
                         <outlet property="titleLabel" destination="f0W-tM-GhH" id="0ab-qU-vQ2"/>
                         <outlet property="usernameLabel" destination="uF2-xf-TNp" id="R7h-s8-dhO"/>
+                        <segue destination="DKi-BY-6nb" kind="presentation" identifier="fullSizeImage" id="jYr-EI-aey"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhB-VY-Za7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1881.1594202898552" y="215.625"/>
+        </scene>
+        <!--Full Size Image View Controller-->
+        <scene sceneID="lze-Fa-Mrn">
+            <objects>
+                <viewController id="Xv3-wx-BWL" customClass="FullSizeImageViewController" customModule="RedditClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IrM-Xx-MB6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tei-8S-C1h">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8AQ-n2-NQX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8AQ-n2-NQX" firstAttribute="bottom" secondItem="Tei-8S-C1h" secondAttribute="bottom" id="Ic3-00-LSK"/>
+                            <constraint firstItem="8AQ-n2-NQX" firstAttribute="trailing" secondItem="Tei-8S-C1h" secondAttribute="trailing" id="a19-zm-f74"/>
+                            <constraint firstItem="Tei-8S-C1h" firstAttribute="leading" secondItem="8AQ-n2-NQX" secondAttribute="leading" id="cVs-Bw-jQd"/>
+                            <constraint firstItem="Tei-8S-C1h" firstAttribute="top" secondItem="8AQ-n2-NQX" secondAttribute="top" id="jK7-eE-nK9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="31d-S4-dHb"/>
+                    <connections>
+                        <outlet property="imageView" destination="Tei-8S-C1h" id="UMb-7B-M8f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ckJ-hc-teN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4026.0869565217395" y="215.625"/>
         </scene>
         <!--Reddit Posts-->
         <scene sceneID="b4K-gg-3Mn">
@@ -247,6 +278,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mg4-io-RnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971.01449275362324" y="215.625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="r0x-rz-GSr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DKi-BY-6nb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ziu-IU-6K1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Xv3-wx-BWL" kind="relationship" relationship="rootViewController" id="hMu-ZT-IfA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gMW-09-JxH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3115.9420289855075" y="215.625"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

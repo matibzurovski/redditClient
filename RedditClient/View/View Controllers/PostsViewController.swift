@@ -9,13 +9,9 @@ import UIKit
 
 class PostsViewController: UITableViewController {
     
-    var presenter: PostsPresenter!
+    // MARK: - Properties
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        presenter.viewDidLoad()
-    }
+    var presenter: PostsPresenter?
     
     private var posts: [PostData] = [] {
         didSet {
@@ -23,11 +19,21 @@ class PostsViewController: UITableViewController {
         }
     }
         
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        presenter?.viewDidLoad()
+    }
+    
+    // MARK: - Interface
+    
     func updatePosts(_ posts: [PostData]) {
         self.posts = posts
     }
     
-    private var selectedPost: PostData?
+    // MARK: - Table view
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -47,20 +53,13 @@ class PostsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Move this to the presenter
-        selectedPost = posts[indexPath.row]
-        performSegue(withIdentifier: "detail", sender: nil)
+        presenter?.didSelectPost(posts[indexPath.row])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        // Move this to the presenter
-        if segue.identifier == "detail" {
-            if let navigationController = segue.destination as? UINavigationController, let destination = navigationController.topViewController as? DetailViewController {
-                destination.post = selectedPost
-            }
-        }
+        presenter?.prepareForSegue(segue)
     }
 }
 
