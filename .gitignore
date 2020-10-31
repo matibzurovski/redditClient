@@ -1,0 +1,16 @@
+#macos stuff
+.DS_Store
+*/.DS_Store
+**/.DS_Store
+
+### Xcode ###
+*.pbxuser
+xcuserdata
+*/xcuserdata/*
+**/xcuserdata/
+**/*.xcuserdata/
+*.xccheckout
+*.xcuserstate
+*.xcscmblueprint
+*.xcuserdatad
+*.xcbkptlist
