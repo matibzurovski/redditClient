@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		23E40B6E254DA2DA002DAC4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40B6D254DA2DA002DAC4F /* AppDelegate.swift */; };
 		23E40B70254DA2DA002DAC4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40B6F254DA2DA002DAC4F /* SceneDelegate.swift */; };
-		23E40B72254DA2DA002DAC4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40B71254DA2DA002DAC4F /* ViewController.swift */; };
 		23E40B75254DA2DA002DAC4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E40B73254DA2DA002DAC4F /* Main.storyboard */; };
 		23E40B77254DA2DC002DAC4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E40B76254DA2DC002DAC4F /* Assets.xcassets */; };
 		23E40B7A254DA2DC002DAC4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E40B78254DA2DC002DAC4F /* LaunchScreen.storyboard */; };
 		23E40B85254DA2DD002DAC4F /* RedditClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40B84254DA2DD002DAC4F /* RedditClientTests.swift */; };
 		23E40B90254DA2DD002DAC4F /* RedditClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40B8F254DA2DD002DAC4F /* RedditClientUITests.swift */; };
+		23E40BAE254DA499002DAC4F /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40BAD254DA499002DAC4F /* PostsViewController.swift */; };
+		23E40BB6254DA4D0002DAC4F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40BB5254DA4D0002DAC4F /* DetailViewController.swift */; };
+		23E40BBB254DA4F8002DAC4F /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40BBA254DA4F8002DAC4F /* PostsPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,6 @@
 		23E40B6A254DA2DA002DAC4F /* RedditClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E40B6D254DA2DA002DAC4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E40B6F254DA2DA002DAC4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		23E40B71254DA2DA002DAC4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		23E40B74254DA2DA002DAC4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23E40B76254DA2DC002DAC4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23E40B79254DA2DC002DAC4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		23E40B8B254DA2DD002DAC4F /* RedditClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E40B8F254DA2DD002DAC4F /* RedditClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditClientUITests.swift; sourceTree = "<group>"; };
 		23E40B91254DA2DD002DAC4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23E40BAD254DA499002DAC4F /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		23E40BB5254DA4D0002DAC4F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		23E40BBA254DA4F8002DAC4F /* PostsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +103,12 @@
 		23E40B6C254DA2DA002DAC4F /* RedditClient */ = {
 			isa = PBXGroup;
 			children = (
-				23E40B6D254DA2DA002DAC4F /* AppDelegate.swift */,
-				23E40B6F254DA2DA002DAC4F /* SceneDelegate.swift */,
-				23E40B71254DA2DA002DAC4F /* ViewController.swift */,
-				23E40B73254DA2DA002DAC4F /* Main.storyboard */,
-				23E40B76254DA2DC002DAC4F /* Assets.xcassets */,
-				23E40B78254DA2DC002DAC4F /* LaunchScreen.storyboard */,
-				23E40B7B254DA2DC002DAC4F /* Info.plist */,
+				23E40BA2254DA367002DAC4F /* Model */,
+				23E40BA3254DA36D002DAC4F /* View */,
+				23E40BA1254DA35D002DAC4F /* Presenter */,
+				23E40BC2254DAB58002DAC4F /* Core */,
+				23E40BA0254DA342002DAC4F /* App */,
+				23E40BA4254DA377002DAC4F /* Supporting Files */,
 			);
 			path = RedditClient;
 			sourceTree = "<group>";
@@ -126,6 +129,73 @@
 				23E40B91254DA2DD002DAC4F /* Info.plist */,
 			);
 			path = RedditClientUITests;
+			sourceTree = "<group>";
+		};
+		23E40BA0254DA342002DAC4F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				23E40B6D254DA2DA002DAC4F /* AppDelegate.swift */,
+				23E40B6F254DA2DA002DAC4F /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		23E40BA1254DA35D002DAC4F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				23E40BBA254DA4F8002DAC4F /* PostsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		23E40BA2254DA367002DAC4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		23E40BA3254DA36D002DAC4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				23E40BA8254DA3BE002DAC4F /* Storyboards */,
+				23E40BAC254DA485002DAC4F /* View Controllers */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		23E40BA4254DA377002DAC4F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				23E40B76254DA2DC002DAC4F /* Assets.xcassets */,
+				23E40B7B254DA2DC002DAC4F /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		23E40BA8254DA3BE002DAC4F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				23E40B78254DA2DC002DAC4F /* LaunchScreen.storyboard */,
+				23E40B73254DA2DA002DAC4F /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		23E40BAC254DA485002DAC4F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				23E40BAD254DA499002DAC4F /* PostsViewController.swift */,
+				23E40BB5254DA4D0002DAC4F /* DetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		23E40BC2254DAB58002DAC4F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23E40B72254DA2DA002DAC4F /* ViewController.swift in Sources */,
+				23E40BAE254DA499002DAC4F /* PostsViewController.swift in Sources */,
 				23E40B6E254DA2DA002DAC4F /* AppDelegate.swift in Sources */,
 				23E40B70254DA2DA002DAC4F /* SceneDelegate.swift in Sources */,
+				23E40BBB254DA4F8002DAC4F /* PostsPresenter.swift in Sources */,
+				23E40BB6254DA4D0002DAC4F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +509,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RedditClient/Info.plist;
+				INFOPLIST_FILE = "RedditClient/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,7 +527,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RedditClient/Info.plist;
+				INFOPLIST_FILE = "RedditClient/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

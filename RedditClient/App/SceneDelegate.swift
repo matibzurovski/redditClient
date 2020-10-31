@@ -11,12 +11,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let window = window else { return }
+        guard let splitViewController = window.rootViewController as? UISplitViewController else { return }
+        guard let postsViewController = (splitViewController.viewControllers.first as? UINavigationController)?.viewControllers.first as? PostsViewController else { return }
+        
+        splitViewController.delegate = self
+        
+        let presenter = PostsPresenter(viewController: postsViewController)
+        postsViewController.presenter = presenter
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -47,6 +50,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+}
 
+// MARK: - UISplitViewControllerDelegate
+extension SceneDelegate: UISplitViewControllerDelegate {
+    
+    func splitViewController(_ svc: UISplitViewController, topColumnForCollapsingToProposedTopColumn proposedTopColumn: UISplitViewController.Column) -> UISplitViewController.Column {
+        return .primary
+    }
 }
 
