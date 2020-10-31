@@ -49,6 +49,7 @@ class PostsViewController: UITableViewController {
         }
         let data = posts[indexPath.row]
         cell.load(data: data)
+        cell.delegate = self
         return cell
     }
     
@@ -63,3 +64,15 @@ class PostsViewController: UITableViewController {
     }
 }
 
+// MARK: - PostTableViewCellDelegate
+extension PostsViewController: PostTableViewCellDelegate {
+    
+    func postTableViewCell(didTapDismiss cell: PostTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        tableView.beginUpdates()
+        posts.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .bottom)
+        tableView.endUpdates()
+    }
+}

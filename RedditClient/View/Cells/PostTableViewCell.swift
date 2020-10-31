@@ -17,9 +17,15 @@ struct PostData {
     let isUnread: Bool
 }
 
+protocol PostTableViewCellDelegate: class {
+    func postTableViewCell(didTapDismiss cell: PostTableViewCell)
+}
+
 class PostTableViewCell: UITableViewCell {
     
     static let identifier = "PostTableViewCell"
+    
+    weak var delegate: PostTableViewCellDelegate?
     
     @IBOutlet fileprivate weak var unreadStatusView: UIView!
     @IBOutlet fileprivate weak var usernameLabel: UILabel!
@@ -51,7 +57,7 @@ class PostTableViewCell: UITableViewCell {
 fileprivate extension PostTableViewCell {
     
     @IBAction func dismissAction(_ sender: Any) {
-    
+        delegate?.postTableViewCell(didTapDismiss: self)
     }
 }
 
