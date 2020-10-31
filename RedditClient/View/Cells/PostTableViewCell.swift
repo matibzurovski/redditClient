@@ -11,6 +11,7 @@ struct PostData {
     let title: String
     let username: String
     let thumbnail: String?
+    let fullSizeImage: String?
     let dateTime: Date?
     let comments: Int
     let isUnread: Bool

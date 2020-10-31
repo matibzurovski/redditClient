@@ -27,7 +27,7 @@ class PostsViewController: UITableViewController {
         self.posts = posts
     }
     
-    private var selectedDetail: String?
+    private var selectedPost: PostData?
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -47,16 +47,18 @@ class PostsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedDetail = posts[indexPath.row].title
+        // Move this to the presenter
+        selectedPost = posts[indexPath.row]
         performSegue(withIdentifier: "detail", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
+        // Move this to the presenter
         if segue.identifier == "detail" {
             if let navigationController = segue.destination as? UINavigationController, let destination = navigationController.topViewController as? DetailViewController {
-                destination.detail = selectedDetail
+                destination.post = selectedPost
             }
         }
     }
