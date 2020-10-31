@@ -13,9 +13,11 @@ class DetailViewController: UIViewController {
     
     var presenter: DetailPresenter?
     
+    @IBOutlet fileprivate weak var dataStackView: UIStackView!
     @IBOutlet fileprivate weak var usernameLabel: UILabel!
     @IBOutlet fileprivate weak var thumbnailImageView: UIImageView!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var emptyDetailLabel: UILabel!
     
     // MARK: - Lifecycle
     
@@ -27,10 +29,18 @@ class DetailViewController: UIViewController {
     
     // MARK: - Interface
     
-    func load(post: PostData) {
-        usernameLabel.text = post.username
-        loadImage(post: post)
-        titleLabel.text = post.title
+    func load(post: PostData?) {
+        if let post = post {
+            usernameLabel.text = post.username
+            loadImage(post: post)
+            titleLabel.text = post.title
+            dataStackView.isHidden = false
+            emptyDetailLabel.isHidden = true
+        } else {
+            dataStackView.isHidden = true
+            emptyDetailLabel.isHidden = false
+        }
+        
     }
     
     private func loadImage(post: PostData) {

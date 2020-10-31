@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="j5O-fQ-Rvu">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="j5O-fQ-Rvu">
                                 <rect key="frame" x="20" y="108" width="374" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-xf-TNp">
@@ -54,18 +54,29 @@
                                     <constraint firstAttribute="trailing" secondItem="eiB-XG-iNy" secondAttribute="trailing" id="dSx-cf-jUB"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a post to see its details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vua-iZ-X9a">
+                                <rect key="frame" x="20" y="438" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tdd-nl-DJJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Tdd-nl-DJJ" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="j5O-fQ-Rvu" secondAttribute="bottom" constant="20" id="2R6-e1-NbY"/>
+                            <constraint firstItem="Vua-iZ-X9a" firstAttribute="leading" secondItem="Tdd-nl-DJJ" secondAttribute="leading" constant="20" id="3cR-Tk-cKT"/>
                             <constraint firstItem="j5O-fQ-Rvu" firstAttribute="top" secondItem="Tdd-nl-DJJ" secondAttribute="top" constant="20" id="ARU-ck-P7G"/>
+                            <constraint firstItem="Vua-iZ-X9a" firstAttribute="centerY" secondItem="wPZ-jB-ZEB" secondAttribute="centerY" id="T9z-TH-zbO"/>
                             <constraint firstItem="Tdd-nl-DJJ" firstAttribute="trailing" secondItem="j5O-fQ-Rvu" secondAttribute="trailing" constant="20" id="d75-es-7Sa"/>
                             <constraint firstItem="j5O-fQ-Rvu" firstAttribute="leading" secondItem="Tdd-nl-DJJ" secondAttribute="leading" constant="20" id="m3M-TB-Gro"/>
+                            <constraint firstItem="Vua-iZ-X9a" firstAttribute="centerX" secondItem="wPZ-jB-ZEB" secondAttribute="centerX" id="ou5-Vf-c4U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="uiE-l3-53K"/>
                     <connections>
+                        <outlet property="dataStackView" destination="j5O-fQ-Rvu" id="cAI-r5-vzB"/>
+                        <outlet property="emptyDetailLabel" destination="Vua-iZ-X9a" id="DD0-5i-0Ql"/>
                         <outlet property="thumbnailImageView" destination="fbR-yS-2o8" id="uQq-Ag-y9Z"/>
                         <outlet property="titleLabel" destination="f0W-tM-GhH" id="0ab-qU-vQ2"/>
                         <outlet property="usernameLabel" destination="uF2-xf-TNp" id="R7h-s8-dhO"/>
