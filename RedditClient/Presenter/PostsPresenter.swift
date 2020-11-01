@@ -26,8 +26,8 @@ class PostsPresenter {
     func didSelectPost(_ post: PostViewModel) {
         selectedPost = post
         let newPost = post.read
-        viewController.replacePost(oldPost: post, newPost: newPost)
         viewController.performSegue(withIdentifier: "detail", sender: nil)
+        viewController.replacePost(oldPost: post, newPost: newPost)
     }
     
     func willDisplayLastPost() {

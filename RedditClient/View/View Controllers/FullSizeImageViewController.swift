@@ -33,10 +33,8 @@ class FullSizeImageViewController: UIViewController {
     }
     
     private func loadImage() {
-        if let image = fullSizeImage, let url = URL(string: image) {
-            imageView.load(url: url) { _ in
-                self.activityIndicator.stopAnimating()
-            }
+        imageView.load(imageUrl: fullSizeImage) { _ in
+            self.activityIndicator.stopAnimating()
         }
     }
     

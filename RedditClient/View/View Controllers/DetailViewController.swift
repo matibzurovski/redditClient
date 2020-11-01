@@ -52,13 +52,11 @@ class DetailViewController: UIViewController {
     // MARK: - Private methods
     
     private func loadImage(post: PostViewModel, allowFullSizeImage: Bool) {
-        if let thumbnail = post.thumbnail, let url = URL(string: thumbnail) {
-            thumbnailImageView.load(url: url)
-            if allowFullSizeImage {
-                setUpImageGesture()
-            }
-        } else {
-            thumbnailImageView.superview?.isHidden = true
+        thumbnailImageView.load(imageUrl: post.thumbnail) { success in
+            self.thumbnailImageView.superview?.isHidden = !success
+        }
+        if allowFullSizeImage {
+            setUpImageGesture()
         }
     }
     

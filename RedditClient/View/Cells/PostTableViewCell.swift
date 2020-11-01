@@ -24,6 +24,12 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var commentsLabel: UILabel!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        thumbnailImageView.image = nil
+    }
+    
     func load(viewModel: PostViewModel) {
         unreadStatusView.isHidden = !viewModel.isUnread
         usernameLabel.text = viewModel.username
@@ -34,12 +40,10 @@ class PostTableViewCell: UITableViewCell {
     }
     
     private func load(thumbnail: String?) {
-        if let thumbnail = thumbnail, let url = URL(string: thumbnail) {
-            thumbnailImageView.load(url: url)
-            thumbnailImageView.isHidden = false
-        } else {
-            thumbnailImageView.isHidden = true
+        thumbnailImageView.load(imageUrl: thumbnail) { success in
+            self.thumbnailImageView.isHidden = !success
         }
+        
     }
 }
 

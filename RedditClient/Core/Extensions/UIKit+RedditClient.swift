@@ -11,7 +11,12 @@ fileprivate let imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
     
-    func load(url: URL, completionHandler: ((Bool) -> Void)? = nil) {
+    func load(imageUrl: String?, completionHandler: ((Bool) -> Void)? = nil) {
+        guard let imageUrl = imageUrl, imageUrl.isImageUrl, let url = URL(string: imageUrl) else {
+            completionHandler?(false)
+            return
+        }
+        
         if let imageFromCache = imageCache.object(forKey: url as AnyObject) as? UIImage {
             /// Image is available on cache
             DispatchQueue.main.async {

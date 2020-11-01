@@ -35,14 +35,3 @@ class DetailPresenter {
         }
     }
 }
-
-// MARK: - Utility
-private extension String {
-    
-    var isImageUrl: Bool {
-        let pathExtension = (self as NSString).pathExtension
-        let imageFormats = ["jpg", "jpeg", "png", "gif"]
-        return imageFormats.contains(pathExtension)
-    }
-    
-}
