@@ -19,7 +19,8 @@ class DetailPresenter {
     }
     
     func viewDidLoad() {
-        viewController.load(post: post)
+        let allowFullSizeImage = post.fullSizeImage?.isImageUrl ?? false
+        viewController.load(post: post, allowFullSizeImage: allowFullSizeImage)
     }
     
     func imageTapped() {
@@ -33,4 +34,15 @@ class DetailPresenter {
             }
         }
     }
+}
+
+// MARK: - Utility
+private extension String {
+    
+    var isImageUrl: Bool {
+        let pathExtension = (self as NSString).pathExtension
+        let imageFormats = ["jpg", "jpeg", "png", "gif"]
+        return imageFormats.contains(pathExtension)
+    }
+    
 }

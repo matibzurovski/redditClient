@@ -9,9 +9,14 @@ import UIKit
 
 class FullSizeImageViewController: UIViewController {
     
+    // MARK: - Properties
+    
     var fullSizeImage: String?
     
     @IBOutlet fileprivate weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var activityIndicator: UIActivityIndicatorView!
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +25,8 @@ class FullSizeImageViewController: UIViewController {
         loadImage()
     }
     
+    // MARK: - Private methods
+    
     private func setUpNavigationButtons() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save image", style: .done, target: self, action: #selector(saveImageAction))
@@ -27,7 +34,9 @@ class FullSizeImageViewController: UIViewController {
     
     private func loadImage() {
         if let image = fullSizeImage, let url = URL(string: image) {
-            imageView.load(url: url)
+            imageView.load(url: url) { _ in
+                self.activityIndicator.stopAnimating()
+            }
         }
     }
     
@@ -41,7 +50,6 @@ class FullSizeImageViewController: UIViewController {
         } else {
             dismissAction()
         }
-        
     }
     
     @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {

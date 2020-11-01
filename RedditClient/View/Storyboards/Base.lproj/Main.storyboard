@@ -98,11 +98,20 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tei-8S-C1h">
                                 <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ySu-oi-PRs">
+                                <rect key="frame" x="184.5" y="398.5" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="321-ay-qC5"/>
+                                    <constraint firstAttribute="width" constant="45" id="U8m-PW-0Wa"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8AQ-n2-NQX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8AQ-n2-NQX" firstAttribute="bottom" secondItem="Tei-8S-C1h" secondAttribute="bottom" id="Ic3-00-LSK"/>
+                            <constraint firstItem="ySu-oi-PRs" firstAttribute="centerY" secondItem="IrM-Xx-MB6" secondAttribute="centerY" id="YbY-3T-jVv"/>
+                            <constraint firstItem="ySu-oi-PRs" firstAttribute="centerX" secondItem="IrM-Xx-MB6" secondAttribute="centerX" id="Yyj-SN-zIa"/>
                             <constraint firstItem="8AQ-n2-NQX" firstAttribute="trailing" secondItem="Tei-8S-C1h" secondAttribute="trailing" id="a19-zm-f74"/>
                             <constraint firstItem="Tei-8S-C1h" firstAttribute="leading" secondItem="8AQ-n2-NQX" secondAttribute="leading" id="cVs-Bw-jQd"/>
                             <constraint firstItem="Tei-8S-C1h" firstAttribute="top" secondItem="8AQ-n2-NQX" secondAttribute="top" id="jK7-eE-nK9"/>
@@ -110,6 +119,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="31d-S4-dHb"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="ySu-oi-PRs" id="45A-Zd-hbv"/>
                         <outlet property="imageView" destination="Tei-8S-C1h" id="UMb-7B-M8f"/>
                     </connections>
                 </viewController>

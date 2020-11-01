@@ -27,12 +27,18 @@ class DetailViewController: UIViewController {
         presenter?.viewDidLoad()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        presenter?.prepareForSegue(segue)
+    }
+    
     // MARK: - Interface
     
-    func load(post: PostViewModel?) {
+    func load(post: PostViewModel?, allowFullSizeImage: Bool) {
         if let post = post {
             usernameLabel.text = post.username
-            loadImage(post: post)
+            loadImage(post: post, allowFullSizeImage: allowFullSizeImage)
             titleLabel.text = post.title
             dataStackView.isHidden = false
             emptyDetailLabel.isHidden = true
@@ -43,10 +49,14 @@ class DetailViewController: UIViewController {
         
     }
     
-    private func loadImage(post: PostViewModel) {
+    // MARK: - Private methods
+    
+    private func loadImage(post: PostViewModel, allowFullSizeImage: Bool) {
         if let thumbnail = post.thumbnail, let url = URL(string: thumbnail) {
             thumbnailImageView.load(url: url)
-            setUpImageGesture()
+            if allowFullSizeImage {
+                setUpImageGesture()
+            }
         } else {
             thumbnailImageView.superview?.isHidden = true
         }
@@ -61,11 +71,7 @@ class DetailViewController: UIViewController {
         presenter?.imageTapped()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        presenter?.prepareForSegue(segue)
-    }
+    
     
 }
 
