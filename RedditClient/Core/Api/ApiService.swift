@@ -22,7 +22,7 @@ class ApiService {
         session = URLSession(configuration: .default)
     }
     
-    func perform<T: Decodable>(request: ApiRequest, completion: @escaping (ApiResponse<T>) -> Void) {
+    func perform<T: Decodable>(request: ApiRequest, completion: @escaping (ApiResponse<T>) -> Void) -> ApiCall {
         let url = baseUrl.appendingPathComponent(request.path)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.httpMethod.rawValue
@@ -56,6 +56,7 @@ class ApiService {
             }
         }
         task.resume()
+        return task
     }
 }
 

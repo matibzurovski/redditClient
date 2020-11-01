@@ -13,6 +13,7 @@
 		231C6054254EFCC800AEF458 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C6053254EFCC800AEF458 /* PostData.swift */; };
 		231C6062254EFD8500AEF458 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C6061254EFD8500AEF458 /* PostViewModel.swift */; };
 		239A89FE254F15DF00FA990C /* UIKit+RedditClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239A89FD254F15DF00FA990C /* UIKit+RedditClient.swift */; };
+		239A8A15254F2D3200FA990C /* ApICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239A8A14254F2D3200FA990C /* ApICall.swift */; };
 		23E40B6E254DA2DA002DAC4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40B6D254DA2DA002DAC4F /* AppDelegate.swift */; };
 		23E40B70254DA2DA002DAC4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E40B6F254DA2DA002DAC4F /* SceneDelegate.swift */; };
 		23E40B75254DA2DA002DAC4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E40B73254DA2DA002DAC4F /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		231C6053254EFCC800AEF458 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		231C6061254EFD8500AEF458 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		239A89FD254F15DF00FA990C /* UIKit+RedditClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+RedditClient.swift"; sourceTree = "<group>"; };
+		239A8A14254F2D3200FA990C /* ApICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApICall.swift; sourceTree = "<group>"; };
 		23E40B6A254DA2DA002DAC4F /* RedditClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E40B6D254DA2DA002DAC4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E40B6F254DA2DA002DAC4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		23E40BF2254DFA5A002DAC4F /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				239A8A14254F2D3200FA990C /* ApICall.swift */,
 				23E40BF3254DFA65002DAC4F /* Api.swift */,
 				23E40BF8254DFAA1002DAC4F /* ApiService.swift */,
 				23E40BFD254DFAE1002DAC4F /* ApiRequest.swift */,
@@ -415,6 +418,7 @@
 			files = (
 				231C6062254EFD8500AEF458 /* PostViewModel.swift in Sources */,
 				239A89FE254F15DF00FA990C /* UIKit+RedditClient.swift in Sources */,
+				239A8A15254F2D3200FA990C /* ApICall.swift in Sources */,
 				23E40BFE254DFAE1002DAC4F /* ApiRequest.swift in Sources */,
 				23E40C09254E01D0002DAC4F /* TopPostsRequest.swift in Sources */,
 				23E40BAE254DA499002DAC4F /* PostsViewController.swift in Sources */,

@@ -15,6 +15,7 @@ class PostsPresenter {
     static let itemsPerPage = 10
     
     fileprivate var selectedPost: PostViewModel?
+    fileprivate var lastCall: ApiCall?
     fileprivate var isLoading = false
     fileprivate var nextPage: String?
     
@@ -28,11 +29,13 @@ class PostsPresenter {
     
     func didPullToRefresh() {
         nextPage = nil
+        cancelFetch()
         viewController.clearPosts()
         fetchPosts()
     }
     
     func didClearPosts() {
+        cancelFetch()
         viewController.clearPosts()
     }
     
@@ -68,7 +71,7 @@ fileprivate extension PostsPresenter {
         isLoading = true
         
         let request = TopPostsRequest(perPage: PostsPresenter.itemsPerPage, page: nextPage)
-        Api.shared.getTopPosts(request: request) { [weak self] response in
+        lastCall = Api.shared.getTopPosts(request: request) { [weak self] response in
             guard let self = self else { return }
             self.isLoading = false
             switch response {
@@ -82,6 +85,9 @@ fileprivate extension PostsPresenter {
         }
     }
     
+    func cancelFetch() {
+        lastCall?.cancel()
+    }
 }
 
 // MARK: - Utility

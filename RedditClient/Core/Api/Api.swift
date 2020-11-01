@@ -17,8 +17,8 @@ class Api {
         service = ApiService(baseUrl: URL(string: "https://reddit.com")!)
     }
     
-    func getTopPosts(request: TopPostsRequest, completion: @escaping (ApiResponse<ListingResponse>) -> Void) {
-        service.perform(request: request, completion: completion)
+    func getTopPosts(request: TopPostsRequest, completion: @escaping (ApiResponse<ListingResponse>) -> Void) -> ApiCall {
+        return service.perform(request: request, completion: completion)
     }
     
 }
