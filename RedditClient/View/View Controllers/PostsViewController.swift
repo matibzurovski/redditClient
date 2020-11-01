@@ -15,7 +15,7 @@ class PostsViewController: UITableViewController {
     
     private var posts: [PostViewModel] = [] {
         didSet {
-            
+            navigationItem.rightBarButtonItem?.isEnabled = !posts.isEmpty
         }
     }
         
@@ -25,6 +25,7 @@ class PostsViewController: UITableViewController {
         super.viewDidLoad()
         
         presenter?.viewDidLoad()
+        addClearButton()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,8 +37,8 @@ class PostsViewController: UITableViewController {
     // MARK: - Interface
     
     func addPosts(_ posts: [PostViewModel]) {
-        self.posts.append(contentsOf: posts)
         DispatchQueue.main.async {
+            self.posts.append(contentsOf: posts)
             self.tableView.reloadData()
         }
     }
@@ -81,6 +82,21 @@ class PostsViewController: UITableViewController {
         let lastItem = posts.count - 1
         guard indexPath.row == lastItem else { return }
         presenter?.willDisplayLastPost()
+    }
+}
+
+// MARK: - UI logic
+fileprivate extension PostsViewController {
+    
+    func addClearButton() {
+        let button = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clear))
+        button.isEnabled = false
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc private func clear() {
+        posts.removeAll()
+        tableView.reloadData()
     }
 }
 
