@@ -33,7 +33,7 @@ class PostTableViewCell: UITableViewCell {
     func load(viewModel: PostViewModel) {
         unreadStatusView.isHidden = !viewModel.isUnread
         usernameLabel.text = viewModel.username
-        dateTimeLabel.text = viewModel.dateTime?.timeAgo
+        dateTimeLabel.text = viewModel.dateTime.timeAgo
         load(thumbnail: viewModel.thumbnail)
         titleLabel.text = viewModel.title
         commentsLabel.text = viewModel.comments.commentsFormatted
@@ -43,7 +43,6 @@ class PostTableViewCell: UITableViewCell {
         thumbnailImageView.load(imageUrl: thumbnail) { success in
             self.thumbnailImageView.isHidden = !success
         }
-        
     }
 }
 

@@ -12,7 +12,7 @@ struct PostViewModel: Equatable {
     let username: String
     let thumbnail: String?
     let fullSizeImage: String?
-    let dateTime: Date?
+    let dateTime: Date
     let comments: Int
     let isUnread: Bool
 }

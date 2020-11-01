@@ -98,6 +98,10 @@ class PostsViewController: UITableViewController, PostsView {
         guard indexPath.row == lastItem else { return }
         presenter?.willDisplayLastPost()
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
 // MARK: - UI logic
