@@ -12,8 +12,11 @@ class PostsPresenter {
     
     let viewController: PostsViewController
     
+    static let itemsPerPage = 10
+    
     fileprivate var selectedPost: PostViewModel?
     fileprivate var isLoading = false
+    fileprivate var nextPage: String?
     
     init(viewController: PostsViewController) {
         self.viewController = viewController
@@ -31,12 +34,8 @@ class PostsPresenter {
     }
     
     func willDisplayLastPost() {
-        var posts: [PostViewModel] = []
-        for index in 0..<4 {
-            let data = PostViewModel(title: "Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy.", username: "sameFunnyName", thumbnail: nil, fullSizeImage: nil, dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
-            posts.append(data)
-        }
-        viewController.addPosts(posts)
+        guard nextPage != nil else { return }
+        fetchPosts()
     }
     
     func prepareForSegue(_ segue: UIStoryboardSegue) {
@@ -51,28 +50,26 @@ class PostsPresenter {
     }
 }
 
+// MARK: - Data loading
 fileprivate extension PostsPresenter {
     
     func fetchPosts() {
         guard !isLoading else { return }
         isLoading = true
         
-        let request = TopPostsRequest()
+        let request = TopPostsRequest(perPage: PostsPresenter.itemsPerPage, page: nextPage)
         Api.shared.getTopPosts(request: request) { [weak self] response in
             guard let self = self else { return }
             self.isLoading = false
             switch response {
             case .success(let response):
                 let posts = response.data.items.map { $0.data.asViewModel }
+                self.nextPage = response.data.next
                 self.viewController.addPosts(posts)
             case .failure(let error):
                 print("Error when fetching top posts. \(error)")
             }
         }
-    }
-    
-    func handlePostsResponse(_ response: ListingResponse) {
-        
     }
     
 }

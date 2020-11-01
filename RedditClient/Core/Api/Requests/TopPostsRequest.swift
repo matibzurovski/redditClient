@@ -17,4 +17,12 @@ struct TopPostsRequest: ApiRequest {
         return "/top.json"
     }
     
+    let perPage: Int
+    let page: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case perPage = "limit"
+        case page = "after"
+    }
+    
 }
