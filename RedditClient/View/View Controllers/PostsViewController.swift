@@ -15,9 +15,7 @@ class PostsViewController: UITableViewController {
     
     private var posts: [PostViewModel] = [] {
         didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            
         }
     }
         
@@ -39,13 +37,20 @@ class PostsViewController: UITableViewController {
     
     func addPosts(_ posts: [PostViewModel]) {
         self.posts.append(contentsOf: posts)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func replacePost(oldPost: PostViewModel, newPost: PostViewModel) {
         guard let index = posts.firstIndex(of: oldPost) else { return }
         posts[index] = newPost
         let indexPath = IndexPath(row: index, section: 0)
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        if let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell {
+            UIView.animate(withDuration: 0.25) {
+                cell.load(viewModel: newPost)
+            }
+        }
     }
     
     // MARK: - Table view
