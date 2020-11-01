@@ -7,7 +7,11 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+protocol DetailView: UIViewController {
+    func load(post: PostViewModel, allowFullSizeImage: Bool)
+}
+
+class DetailViewController: UIViewController, DetailView {
     
     // MARK: - Properties
     
@@ -35,18 +39,12 @@ class DetailViewController: UIViewController {
     
     // MARK: - Interface
     
-    func load(post: PostViewModel?, allowFullSizeImage: Bool) {
-        if let post = post {
-            usernameLabel.text = post.username
-            loadImage(post: post, allowFullSizeImage: allowFullSizeImage)
-            titleLabel.text = post.title
-            dataStackView.isHidden = false
-            emptyDetailLabel.isHidden = true
-        } else {
-            dataStackView.isHidden = true
-            emptyDetailLabel.isHidden = false
-        }
-        
+    func load(post: PostViewModel, allowFullSizeImage: Bool) {
+        usernameLabel.text = post.username
+        loadImage(post: post, allowFullSizeImage: allowFullSizeImage)
+        titleLabel.text = post.title
+        dataStackView.isHidden = false
+        emptyDetailLabel.isHidden = true
     }
     
     // MARK: - Private methods

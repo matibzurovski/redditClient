@@ -7,7 +7,13 @@
 
 import UIKit
 
-class PostsViewController: UITableViewController {
+protocol PostsView: UIViewController {
+    func addPosts(_ posts: [PostViewModel])
+    func clearPosts()
+    func replacePost(oldPost: PostViewModel, newPost: PostViewModel)
+}
+
+class PostsViewController: UITableViewController, PostsView {
     
     // MARK: - Properties
     
@@ -116,7 +122,7 @@ fileprivate extension PostsViewController {
     }
     
     @objc private func clearAction() {
-        presenter?.didClearPosts()
+        presenter?.didDismissPosts()
     }
     
     private func startRefreshing() {

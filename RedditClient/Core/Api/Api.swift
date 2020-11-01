@@ -7,9 +7,14 @@
 
 import Foundation
 
-class Api {
+protocol Api {
     
-    static let shared = Api()
+    func getTopPosts(request: TopPostsRequest, completion: @escaping (ApiResponse<ListingResponse>) -> Void) -> ApiCall
+}
+
+class DefaultApi: Api {
+    
+    static let shared = DefaultApi()
     
     fileprivate let service: ApiService
     

@@ -10,21 +10,21 @@ import UIKit
 
 class DetailPresenter {
     
-    fileprivate let viewController: DetailViewController
+    fileprivate let view: DetailView
     fileprivate let post: PostViewModel
     
-    init(viewController: DetailViewController, post: PostViewModel) {
-        self.viewController = viewController
+    init(view: DetailView, post: PostViewModel) {
+        self.view = view
         self.post = post
     }
     
     func viewDidLoad() {
         let allowFullSizeImage = post.fullSizeImage?.isImageUrl ?? false
-        viewController.load(post: post, allowFullSizeImage: allowFullSizeImage)
+        view.load(post: post, allowFullSizeImage: allowFullSizeImage)
     }
     
     func imageTapped() {
-        viewController.performSegue(withIdentifier: "fullSizeImage", sender: nil)
+        view.performSegue(withIdentifier: "fullSizeImage", sender: nil)
     }
     
     func prepareForSegue(_ segue: UIStoryboardSegue) {

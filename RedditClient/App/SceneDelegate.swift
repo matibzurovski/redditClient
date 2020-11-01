@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         splitViewController.delegate = self
         
-        let presenter = PostsPresenter(viewController: postsViewController)
+        let presenter = PostsPresenter(view: postsViewController)
         postsViewController.presenter = presenter
     }
 
