@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PostViewModel {
+struct PostViewModel: Equatable {
     let title: String
     let username: String
     let thumbnail: String?

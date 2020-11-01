@@ -25,6 +25,8 @@ class PostsPresenter {
     
     func didSelectPost(_ post: PostViewModel) {
         selectedPost = post
+        let newPost = post.read
+        viewController.replacePost(oldPost: post, newPost: newPost)
         viewController.performSegue(withIdentifier: "detail", sender: nil)
     }
     
@@ -75,9 +77,19 @@ fileprivate extension PostsPresenter {
     
 }
 
+// MARK: - Utility
 private extension PostData {
     
     var asViewModel: PostViewModel {
-        return PostViewModel(title: title, username: author, thumbnail: thumbnail, fullSizeImage: fullSizeImage, dateTime: dateTime, comments: comments, isUnread: true)
+        return PostViewModel(title: title, username: author, thumbnail: thumbnail, fullSizeImage: fullSizeImage,
+                             dateTime: dateTime, comments: comments, isUnread: true)
+    }
+}
+
+private extension PostViewModel {
+    
+    var read: PostViewModel {
+        return PostViewModel(title: title, username: username, thumbnail: thumbnail, fullSizeImage: fullSizeImage,
+                             dateTime: dateTime, comments: comments, isUnread: false)
     }
 }

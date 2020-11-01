@@ -41,6 +41,13 @@ class PostsViewController: UITableViewController {
         self.posts.append(contentsOf: posts)
     }
     
+    func replacePost(oldPost: PostViewModel, newPost: PostViewModel) {
+        guard let index = posts.firstIndex(of: oldPost) else { return }
+        posts[index] = newPost
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
     // MARK: - Table view
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,7 +87,7 @@ extension PostsViewController: PostTableViewCellDelegate {
         
         tableView.beginUpdates()
         posts.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .bottom)
+        tableView.deleteRows(at: [indexPath], with: .left)
         tableView.endUpdates()
     }
 }
