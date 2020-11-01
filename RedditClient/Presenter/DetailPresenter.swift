@@ -11,9 +11,9 @@ import UIKit
 class DetailPresenter {
     
     fileprivate let viewController: DetailViewController
-    fileprivate let post: PostData
+    fileprivate let post: PostViewModel
     
-    init(viewController: DetailViewController, post: PostData) {
+    init(viewController: DetailViewController, post: PostViewModel) {
         self.viewController = viewController
         self.post = post
     }

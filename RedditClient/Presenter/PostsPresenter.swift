@@ -12,36 +12,36 @@ class PostsPresenter {
     
     let viewController: PostsViewController
     
-    fileprivate var selectedPost: PostData?
+    fileprivate var selectedPost: PostViewModel?
     
     init(viewController: PostsViewController) {
         self.viewController = viewController
     }
     
     func viewDidLoad() {
-        var posts: [PostData] = []
+        var posts: [PostViewModel] = []
         for index in 0..<12 {
             if index == 3 {
-                let data = PostData(title: "Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy.", username: "sameFunnyName", thumbnail: nil, fullSizeImage: nil, dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
+                let data = PostViewModel(title: "Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy.", username: "sameFunnyName", thumbnail: nil, fullSizeImage: nil, dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
                 posts.append(data)
             } else {
             
-                let data = PostData(title: "First new Keanu pic of the year", username: "sameFunnyName", thumbnail: "https://b.thumbs.redditmedia.com/UzwFlv-3K7cDKjf9jhUMXikn-6QzD1ZMRtzGSBTqBnk.jpg", fullSizeImage: "https://i.redd.it/2mt8fyb6d9w51.jpg", dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
+                let data = PostViewModel(title: "First new Keanu pic of the year", username: "sameFunnyName", thumbnail: "https://b.thumbs.redditmedia.com/UzwFlv-3K7cDKjf9jhUMXikn-6QzD1ZMRtzGSBTqBnk.jpg", fullSizeImage: "https://i.redd.it/2mt8fyb6d9w51.jpg", dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
                 posts.append(data)
             }
         }
         viewController.updatePosts(posts)
     }
     
-    func didSelectPost(_ post: PostData) {
+    func didSelectPost(_ post: PostViewModel) {
         selectedPost = post
         viewController.performSegue(withIdentifier: "detail", sender: nil)
     }
     
     func willDisplayLastPost() {
-        var posts: [PostData] = []
+        var posts: [PostViewModel] = []
         for index in 0..<4 {
-            let data = PostData(title: "Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy.", username: "sameFunnyName", thumbnail: nil, fullSizeImage: nil, dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
+            let data = PostViewModel(title: "Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy. Can't get much smoother than this guy.", username: "sameFunnyName", thumbnail: nil, fullSizeImage: nil, dateTime: Date().addingTimeInterval(-4234), comments: index, isUnread: true)
             posts.append(data)
         }
         viewController.addPosts(posts)

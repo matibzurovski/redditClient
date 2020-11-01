@@ -10,10 +10,19 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let request = TopPostsRequest()
+        Api.shared.getTopPosts(request: request) { response in
+            switch response {
+            case .success(let response):
+                print("Success! \(response)")
+            case .failure(let error):
+                print("Error! \(error)")
+            }
+        }
+        
         return true
     }
 

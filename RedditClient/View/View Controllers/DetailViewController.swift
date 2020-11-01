@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     
     // MARK: - Interface
     
-    func load(post: PostData?) {
+    func load(post: PostViewModel?) {
         if let post = post {
             usernameLabel.text = post.username
             loadImage(post: post)
@@ -43,7 +43,7 @@ class DetailViewController: UIViewController {
         
     }
     
-    private func loadImage(post: PostData) {
+    private func loadImage(post: PostViewModel) {
         if let thumbnail = post.thumbnail, let url = URL(string: thumbnail) {
             thumbnailImageView.load(url: url)
             setUpImageGesture()

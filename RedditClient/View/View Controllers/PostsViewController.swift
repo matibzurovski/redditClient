@@ -13,7 +13,7 @@ class PostsViewController: UITableViewController {
     
     var presenter: PostsPresenter?
     
-    private var posts: [PostData] = [] {
+    private var posts: [PostViewModel] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -35,11 +35,11 @@ class PostsViewController: UITableViewController {
     
     // MARK: - Interface
     
-    func updatePosts(_ posts: [PostData]) {
+    func updatePosts(_ posts: [PostViewModel]) {
         self.posts = posts
     }
     
-    func addPosts(_ posts: [PostData]) {
+    func addPosts(_ posts: [PostViewModel]) {
         self.posts.append(contentsOf: posts)
     }
     
@@ -57,8 +57,8 @@ class PostsViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else {
             return UITableViewCell()
         }
-        let data = posts[indexPath.row]
-        cell.load(data: data)
+        let viewModel = posts[indexPath.row]
+        cell.load(viewModel: viewModel)
         cell.delegate = self
         return cell
     }

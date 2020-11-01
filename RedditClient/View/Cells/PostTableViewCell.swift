@@ -7,16 +7,6 @@
 
 import UIKit
 
-struct PostData {
-    let title: String
-    let username: String
-    let thumbnail: String?
-    let fullSizeImage: String?
-    let dateTime: Date?
-    let comments: Int
-    let isUnread: Bool
-}
-
 protocol PostTableViewCellDelegate: class {
     func postTableViewCell(didTapDismiss cell: PostTableViewCell)
 }
@@ -34,13 +24,13 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var commentsLabel: UILabel!
     
-    func load(data: PostData) {
-        unreadStatusView.isHidden = !data.isUnread
-        usernameLabel.text = data.username
-        dateTimeLabel.text = data.dateTime?.timeAgo
-        load(thumbnail: data.thumbnail)
-        titleLabel.text = data.title
-        commentsLabel.text = data.comments.commentsFormatted
+    func load(viewModel: PostViewModel) {
+        unreadStatusView.isHidden = !viewModel.isUnread
+        usernameLabel.text = viewModel.username
+        dateTimeLabel.text = viewModel.dateTime?.timeAgo
+        load(thumbnail: viewModel.thumbnail)
+        titleLabel.text = viewModel.title
+        commentsLabel.text = viewModel.comments.commentsFormatted
     }
     
     private func load(thumbnail: String?) {
