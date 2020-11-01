@@ -15,7 +15,9 @@ class PostsViewController: UITableViewController {
     
     private var posts: [PostViewModel] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
         
@@ -34,10 +36,6 @@ class PostsViewController: UITableViewController {
     }
     
     // MARK: - Interface
-    
-    func updatePosts(_ posts: [PostViewModel]) {
-        self.posts = posts
-    }
     
     func addPosts(_ posts: [PostViewModel]) {
         self.posts.append(contentsOf: posts)
