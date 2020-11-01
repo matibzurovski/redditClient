@@ -26,6 +26,16 @@ class PostsPresenter {
         fetchPosts()
     }
     
+    func didPullToRefresh() {
+        nextPage = nil
+        viewController.clearPosts()
+        fetchPosts()
+    }
+    
+    func didClearPosts() {
+        viewController.clearPosts()
+    }
+    
     func didSelectPost(_ post: PostViewModel) {
         selectedPost = post
         let newPost = post.read

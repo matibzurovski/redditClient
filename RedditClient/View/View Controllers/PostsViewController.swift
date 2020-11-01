@@ -25,6 +25,7 @@ class PostsViewController: UITableViewController {
         super.viewDidLoad()
         
         presenter?.viewDidLoad()
+        setUpPullToRefresh()
         addClearButton()
     }
     
@@ -39,6 +40,14 @@ class PostsViewController: UITableViewController {
     func addPosts(_ posts: [PostViewModel]) {
         DispatchQueue.main.async {
             self.posts.append(contentsOf: posts)
+            self.tableView.reloadData()
+            self.endRefreshing()
+        }
+    }
+    
+    func clearPosts() {
+        DispatchQueue.main.async {
+            self.posts.removeAll()
             self.tableView.reloadData()
         }
     }
@@ -88,15 +97,37 @@ class PostsViewController: UITableViewController {
 // MARK: - UI logic
 fileprivate extension PostsViewController {
     
+    func setUpPullToRefresh() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(pullToRefreshAction), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
     func addClearButton() {
-        let button = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clear))
+        let button = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearAction))
         button.isEnabled = false
         navigationItem.rightBarButtonItem = button
     }
     
-    @objc private func clear() {
-        posts.removeAll()
-        tableView.reloadData()
+    @objc private func pullToRefreshAction() {
+        presenter?.didPullToRefresh()
+        startRefreshing()
+    }
+    
+    @objc private func clearAction() {
+        presenter?.didClearPosts()
+    }
+    
+    private func startRefreshing() {
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Refreshing..")
+    }
+    
+    private func endRefreshing() {
+        tableView.refreshControl?.endRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        }
     }
 }
 
