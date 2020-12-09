@@ -17,7 +17,7 @@ class PostsViewController: UITableViewController, PostsView {
     
     // MARK: - Properties
     
-    var presenter: PostsPresenter?
+    weak var presenter: PostsPresenter?
     
     private var posts: [PostViewModel] = [] {
         didSet {

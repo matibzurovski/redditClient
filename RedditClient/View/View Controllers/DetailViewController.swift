@@ -15,7 +15,7 @@ class DetailViewController: UIViewController, DetailView {
     
     // MARK: - Properties
     
-    var presenter: DetailPresenter?
+    weak var presenter: DetailPresenter?
     
     @IBOutlet fileprivate weak var dataStackView: UIStackView!
     @IBOutlet fileprivate weak var usernameLabel: UILabel!
